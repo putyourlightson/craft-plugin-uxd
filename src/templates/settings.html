@@ -2,11 +2,25 @@
 
 
 {{ forms.textField({
+	label: "Navigation Label"|t('plugin-uxd'),
+	instructions: "The label to give the plugin in the navigation sidebar."|t('plugin-uxd'),
+	name: 'navLabel',
+	value: settings.navLabel,
+	first: true,
+}) }}
+
+{{ forms.textField({
+	label: "Navigation Icon Mask Path"|t('plugin-uxd'),
+	instructions: "The path to an icon mask to show in the navigation sidebar."|t('plugin-uxd'),
+	name: 'navIconMaskPath',
+	value: settings.navIconMaskPath,
+}) }}
+
+{{ forms.textField({
 	label: "Template File Path"|t('plugin-uxd'),
 	instructions: "The path to your template file."|t('plugin-uxd'),
 	name: 'templateFilePath',
 	value: settings.templateFilePath,
-	first: true,
 }) }}
 
 {{ forms.textField({

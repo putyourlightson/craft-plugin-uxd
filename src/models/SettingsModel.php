@@ -15,6 +15,16 @@ class SettingsModel extends Model
     /**
      * @var string
      */
+    public $navLabel;
+
+    /**
+     * @var string
+     */
+    public $navIconMaskPath;
+
+    /**
+     * @var string
+     */
     public $templateFilePath;
 
     /**

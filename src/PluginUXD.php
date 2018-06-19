@@ -46,6 +46,20 @@ class PluginUXD extends Plugin
 
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getCpNavItem()
+    {
+        $settings = $this->getSettings();
+
+        $parent = parent::getCpNavItem();
+        $parent['label'] = $settings->navLabel ?: $parent['label'];
+        $parent['icon'] = $settings->navIconMaskPath ?: $parent['icon'];
+
+        return $parent;
+    }
+
     // Protected Methods
     // =========================================================================
 
