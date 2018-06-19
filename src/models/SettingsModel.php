@@ -15,7 +15,7 @@ class SettingsModel extends Model
     /**
      * @var string
      */
-    public $templateFolderPath;
+    public $templateFilePath;
 
     /**
      * @var string

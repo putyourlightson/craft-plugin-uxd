@@ -1,6 +1,6 @@
 # Plugin UXD for Craft CMS
 
-The Plugin UXD plugin is helpful for designing plugin control panel pages in [Craft CMS](https://craftcms.com/).
+The Plugin UXD plugin is a user experience designer for plugin control panel pages in [Craft CMS](https://craftcms.com/).
 
 ## Requirements
 

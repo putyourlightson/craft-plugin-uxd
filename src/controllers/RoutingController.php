@@ -7,7 +7,7 @@ namespace putyourlightson\pluginuxd\controllers;
 
 use Craft;
 use craft\web\Controller;
-use craft\web\View;
+use putyourlightson\pluginuxd\models\SettingsModel;
 use putyourlightson\pluginuxd\PluginUXD;
 use yii\base\ErrorException;
 
@@ -18,48 +18,24 @@ class RoutingController extends Controller
         /** @var SettingsModel $settings */
         $settings = PluginUXD::$plugin->getSettings();
 
-        if (empty($settings->templateFolderPath)) {
-            return;
+        if (empty($settings->templateFilePath)) {
+            return $this->redirect('plugin-uxd/stylesheet');
         }
 
-        //$view = Craft::$app->getView();
+        $view = Craft::$app->getView();
+        $templateMode = $view->getTemplateMode();
+        $view->setTemplateMode($view::TEMPLATE_MODE_SITE);
+        $siteTemplatesPath = $view->getTemplatesPath();
+        $view->setTemplateMode($templateMode);
 
-        // Get template mode so we can reset later
-        //$templateMode = $view->getTemplateMode();
+        $templateFilePath = trim($settings->templateFilePath, '/').'.html';
 
-        // Set template mode to front-end site
-        //$view->setTemplateMode(View::TEMPLATE_MODE_SITE);
-
-        $templateFolderPath = '/Users/ben/Sites/craft3/templates'.'/'.trim($settings->templateFolderPath, '/').'/';
-
-        // Reset template mode
-        //$view->setTemplateMode($templateMode);
-
-        if (!is_dir($templateFolderPath)) {
-            throw new ErrorException('The template folder path is not valid: '.$templateFolderPath);
+        if (!is_file($siteTemplatesPath.'/'.$templateFilePath)) {
+            throw new ErrorException('The template file path is not valid: '.$settings->templateFilePath);
         }
 
-        if (!($handle = opendir($templateFolderPath))) {
-            throw new ErrorException('Unable to open the template folder path: '.$templateFolderPath);
-        }
+        copy($siteTemplatesPath.'/'.$templateFilePath, PluginUXD::$plugin->basePath.'/templates/temp/index.html');
 
-        $templates = [];
-
-        while (($filename = readdir($handle)) !== false) {
-            if ($filename[0] != '.') {
-                $template = substr($filename, 0, strpos($filename, '.'));
-                $templates[$template] = $templateFolderPath.$filename;
-            }
-        }
-
-        closedir($handle);
-
-        if (isset($templates['index'])) {
-            $html = file_get_contents($templates['index']);
-
-            return $this->renderFile($templates['index']);
-        }
-
-        return $this->redirect('plugin-uxd/stylesheet');
+        return $this->renderTemplate('plugin-uxd/temp/index');
     }
 }

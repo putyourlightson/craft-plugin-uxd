@@ -1,5 +1,7 @@
 {% extends "_layouts/cp" %}
 
+{% import "_includes/forms" as forms %}
+
 {% set title = "Stylesheet"|t('plugin-uxd') %}
 
 {% set crumbs = [
@@ -7,11 +9,14 @@
 ] %}
 
 {% set tabs = {
-    'tab1': {'label': 'Tab 1', 'url': '#'},
-    'tab2': {'label': 'Tab 2', 'url': '#'},
-    'tab3': {'label': 'Tab 3', 'url': '#'},
+    'text': {'label': 'Text', 'url': '#text'},
+    'selection': {'label': 'Selection', 'url': '#selection'},
+    'color': {'label': 'Color', 'url': '#color'},
+    'file': {'label': 'File', 'url': '#file'},
+    'date': {'label': 'Date', 'url': '#date'},
+    'element': {'label': 'Element', 'url': '#element'},
+    'table': {'label': 'Table', 'url': '#table'},
 } %}
-{% set selectedTab = 'tab1' %}
 
 
 {% block actionButton %}
@@ -21,6 +26,211 @@
 
 {% block content %}
 
-    {% include "plugin-uxd/_includes/stylesheet" %}
+    <div id="text">
+
+        {{ forms.textField({
+            label: "Plaintext Field"|t('plugin-uxd') ,
+            instructions: "See `templates/_includes/forms/text.html` for all available options."|t('plugin-uxd'),
+            placeholder: "Placeholder text"|t('plugin-uxd'),
+            warning: "This field is required."|t('plugin-uxd'),
+            name: '',
+            value: '',
+            required: true,
+            autofocus: true,
+        }) }}
+
+        {{ forms.textField({
+            label: "Password Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/text.html` for all available options."|t('plugin-uxd'),
+            type: 'password',
+            name: '',
+            value: '1234567890',
+            showCharsLeft: true,
+        }) }}
+
+        {{ forms.textareaField({
+            label: "Textarea Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/textarea.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: '',
+            rows: 3,
+        }) }}
+
+    </div>
+
+    <div id="selection" class="hidden">
+
+        {{ forms.lightswitchField({
+            label: "Lightswitch Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/lightswitch.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            on: true,
+        }) }}
+
+        {{ forms.checkboxGroupField({
+            label: "Checkbox Group Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/checkboxGroup.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            values: [1, 3],
+            options: {
+                1: 'Option 1',
+                2: 'Option 2',
+                3: 'Option 3',
+            },
+        }) }}
+
+        {{ forms.radioGroupField({
+            label: "Radio Group Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/radioGroup.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: 2,
+            options: {
+                1: 'Option 1',
+                2: 'Option 2',
+                3: 'Option 3',
+            },
+        }) }}
+
+        {{ forms.selectField({
+            label: "Select Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/select.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: 2,
+            options: {
+                1: 'Option 1',
+                2: 'Option 2',
+                3: 'Option 3',
+            },
+        }) }}
+
+        {{ forms.multiselectField({
+            label: "Multi Select Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/multiselect.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            values: [1, 3],
+            options: {
+                1: 'Option 1',
+                2: 'Option 2',
+                3: 'Option 3',
+            },
+        }) }}
+
+    </div>
+
+    <div id="color" class="hidden">
+
+        {{ forms.colorField({
+            label: "Color Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/color.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: '#da5a47',
+        }) }}
+
+    </div>
+
+    <div id="file" class="hidden">
+
+        {{ forms.fileField({
+            label: "File Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/file.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: '',
+        }) }}
+
+    </div>
+
+    <div id="date" class="hidden">
+
+        {{ forms.dateField({
+            label: "Date Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/date.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: now|date,
+        }) }}
+
+        {{ forms.timeField({
+            label: "Time Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/time.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: now|date('h:i'),
+        }) }}
+
+        {{ forms.dateTimeField({
+            label: "Datetime Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/date.html` and `templates/_includes/forms/time.html` for all available options."|t('plugin-uxd'),
+            name: '',
+            value: now|date('h:i'),
+        }) }}
+
+    </div>
+
+    <div id="element" class="hidden">
+
+        {{ forms.elementSelectField({
+            label: "Entry Select Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/elementSelect.html` for all available options."|t('plugin-uxd'),
+            id: 'entries',
+            name: '',
+            elements: [craft.entries.one()],
+            elementType: 'craft\\elements\\Entry',
+            limit: 5,
+            selectionLabel: "Add an entry"|t('plugin-uxd'),
+        }) }}
+
+        {{ forms.elementSelectField({
+            label: "Asset Select Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/elementSelect.html` for all available options."|t('plugin-uxd'),
+            id: 'assets',
+            name: '',
+            elements: [craft.assets.one()],
+            elementType: 'craft\\elements\\Assets',
+            limit: 5,
+            selectionLabel: "Add an asset"|t('plugin-uxd'),
+        }) }}
+
+    </div>
+
+    <div id="table" class="hidden">
+
+        {{ forms.editableTableField({
+            label: "Editable Table Field"|t('plugin-uxd'),
+            instructions: "See `templates/_includes/forms/editableTable.html` for all available options."|t('plugin-uxd'),
+            id: 'table',
+            name: '',
+            cols: [
+                {
+                    type: 'text',
+                    heading: 'Name',
+                    info: "The contact's full name."|t('plugin-uxd'),
+                },
+                {
+                    type: 'text',
+                    heading: 'Email',
+                },
+            ],
+            rows: [
+                [
+                    {
+                        value: 'Jack',
+                    },
+                    {
+                        value: 'jack@email',
+                    },
+                ],
+                [
+                    {
+                        value: 'Jill',
+                    },
+                    {
+                        value: 'jill@email.com',
+                    },
+                ],
+            ],
+            addRowLabel: "Add a contact"|t('plugin-uxd'),
+            minRows: 1,
+            maxRows: 5,
+        }) }}
+
+    </div>
 
 {% endblock %}
