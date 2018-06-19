@@ -34,7 +34,13 @@ class RoutingController extends Controller
             throw new ErrorException('The template file path is not valid: '.$settings->templateFilePath);
         }
 
-        copy($siteTemplatesPath.'/'.$templateFilePath, PluginUXD::$plugin->basePath.'/templates/temp/index.html');
+        $basePath = PluginUXD::$plugin->getBasePath();
+
+        if (!is_dir($basePath.'/templates/temp')) {
+            mkdir($basePath.'/templates/temp');
+        }
+
+        copy($siteTemplatesPath.'/'.$templateFilePath, $basePath.'/templates/temp/index.html');
 
         return $this->renderTemplate('plugin-uxd/temp/index');
     }
