@@ -1,0 +1,26 @@
+{% extends "_layouts/cp" %}
+
+{% set title = "Stylesheet"|t('plugin-uxd') %}
+
+{% set crumbs = [
+    { label: 'Plugin UXD'|t('plugin-uxd'), url: url('plugin-uxd') }
+] %}
+
+{% set tabs = {
+    'tab1': {'label': 'Tab 1', 'url': '#'},
+    'tab2': {'label': 'Tab 2', 'url': '#'},
+    'tab3': {'label': 'Tab 3', 'url': '#'},
+} %}
+{% set selectedTab = 'tab1' %}
+
+
+{% block actionButton %}
+    <a href="#" class="btn submit add icon">{{ "New Item"|t('plugin-uxd') }}</a>
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "plugin-uxd/_includes/stylesheet" %}
+
+{% endblock %}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1.66667,-1.35708e-16,-1.35708e-16,1.66667,8.88178e-16,-35.3256)">
+        <path d="M51,30L51,4C51,1.791 49.209,0 47,0C44.791,0 43,1.791 43,4L43,30L17,30L17,4C17,1.791 15.209,0 13,0C10.791,0 9,1.791 9,4L9,30L0,30L0,46C0,60.514 10.307,72.619 24,75.398L24,100L29.994,110.396L36,100L36,75.398C49.693,72.619 60,60.514 60,46L60,30L51,30Z" style="fill:rgb(41,50,60);fill-rule:nonzero;"/>
+    </g>
+    <g transform="matrix(0.851088,0,0,0.851088,-27.4696,34.5171)">
+        <text x="46.524px" y="42.3px" style="font-family:'GearedSlab-Regular', 'Geared Slab';font-stretch:condensed;font-size:68.148px;fill:white;">UXD</text>
+    </g>
+</svg>

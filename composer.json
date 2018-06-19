@@ -1,0 +1,37 @@
+{
+    "name": "putyourlightson/craft-plugin-uxd",
+    "description": "Craft plugin user experience designer.",
+    "version": "1.0.0",
+    "type": "craft-plugin",
+    "homepage": "https://github.com/putyourlightson/craft-plugin-uxd",
+    "license": "MIT",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "plugin"
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "putyourlightson\\pluginuxd\\": "src/"
+        }
+    },
+    "support": {
+        "docs": "https://github.com/putyourlightson/craft-plugin-uxd",
+        "source": "https://github.com/putyourlightson/craft-plugin-uxd",
+        "issues": "https://github.com/putyourlightson/craft-plugin-uxd/issues"
+    },
+    "extra": {
+        "name": "Plugin UXD",
+        "handle": "plugin-uxd",
+        "developer": "PutYourLightsOn",
+        "developerUrl": "https://www.putyourlightson.net/",
+        "changelogUrl": "https://raw.githubusercontent.com/putyourlightson/craft-plugin-uxd/v1/CHANGELOG.md",
+        "class": "putyourlightson\\pluginuxd\\PluginUXD",
+        "hasCpSettings": true,
+        "hasCpSection": true
+    }
+}

@@ -1,0 +1,24 @@
+{% import "_includes/forms" as forms %}
+
+
+{{ forms.textField({
+	label: "Template Folder Path"|t('plugin-uxd'),
+	instructions: "The path to your template folder."|t('plugin-uxd'),
+	name: 'templateFolderPath',
+	value: settings.templateFolderPath,
+	first: true,
+}) }}
+
+{{ forms.textField({
+	label: "CSS File Path"|t('plugin-uxd'),
+	instructions: "The path to your CSS file."|t('plugin-uxd'),
+	name: 'cssFilePath',
+	value: settings.cssFilePath,
+}) }}
+
+{{ forms.textField({
+	label: "Javascript File Path"|t('plugin-uxd'),
+	instructions: "The path to your javascript file."|t('plugin-uxd'),
+	name: 'jsFilePath',
+	value: settings.jsFilePath,
+}) }}
