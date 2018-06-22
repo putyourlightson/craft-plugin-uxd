@@ -11,28 +11,19 @@
 
 {{ forms.textField({
 	label: "Navigation Icon Mask Path"|t('plugin-uxd'),
-	instructions: "The path to an icon mask to show in the navigation sidebar."|t('plugin-uxd'),
+	instructions: "The full path to an icon mask to show in the navigation sidebar."|t('plugin-uxd'),
 	name: 'navIconMaskPath',
 	value: settings.navIconMaskPath,
 }) }}
 
 {{ forms.textField({
-	label: "Template File Path"|t('plugin-uxd'),
-	instructions: "The path to your template file."|t('plugin-uxd'),
-	name: 'templateFilePath',
-	value: settings.templateFilePath,
+	label: "Template Folder Path"|t('plugin-uxd'),
+	instructions: "The full path to your template folder."|t('plugin-uxd'),
+	name: 'templateFolderPath',
+	value: settings.templateFolderPath,
 }) }}
 
-{{ forms.textField({
-	label: "CSS File Path"|t('plugin-uxd'),
-	instructions: "The path to your CSS file."|t('plugin-uxd'),
-	name: 'cssFilePath',
-	value: settings.cssFilePath,
-}) }}
-
-{{ forms.textField({
-	label: "Javascript File Path"|t('plugin-uxd'),
-	instructions: "The path to your javascript file."|t('plugin-uxd'),
-	name: 'jsFilePath',
-	value: settings.jsFilePath,
-}) }}
+<div class="light">
+	Any references to your templates (included or extended) should be written as `plugin-uxd/temp/{template-folder-path}`.
+	<pre><code>{{ '{% include "plugin-uxd/temp/{template-folder-path}" %}' }}</code></pre>
+</div>

@@ -9,13 +9,9 @@
 ] %}
 
 {% set tabs = {
-    'text': {'label': 'Text', 'url': '#text'},
-    'selection': {'label': 'Selection', 'url': '#selection'},
-    'color': {'label': 'Color', 'url': '#color'},
-    'file': {'label': 'File', 'url': '#file'},
-    'date': {'label': 'Date', 'url': '#date'},
-    'element': {'label': 'Element', 'url': '#element'},
-    'table': {'label': 'Table', 'url': '#table'},
+    'typography': {'label': 'Typography', 'url': '#typography'},
+    'fields': {'label': 'Fields', 'url': '#fields'},
+    'tables': {'label': 'Tables', 'url': '#tables'},
 } %}
 
 
@@ -26,15 +22,53 @@
 
 {% block content %}
 
-    <div id="text">
+    <div id="typography">
+
+        <h1>Header 1</h1>
+        <h2>Header 2</h2>
+        <h3>Header 3</h3>
+        <h4>Header 4</h4>
+        <h5>Header 5</h5>
+        <h6>Header 6</h6>
+
+        <hr/>
+
+        <h1>Body Copy</h1>
+
+        <p>Regular text can be <strong>bold</strong>, <em>italic</em>, <u>underlined</u>, <code>code</code>, <span class="light">light</span> and <a href="#" class="go">linked</a></p>
+        <p>
+            More info modals are useful to show more text when required
+            <span class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+        </p>
+
+        <hr/>
+
+        <h1>Buttons</h1>
+
+        <p>
+            <a href="#" class="btn">Button</a>
+            <a href="#" class="btn submit">Submit</a>
+            <a href="#" class="btn submit add icon">New</a>
+        </p>
+        <p>
+            <a href="#" class="btn small">Button</a>
+            <a href="#" class="btn submit small">Submit</a>
+            <a href="#" class="btn submit add icon small">New</a>
+        </p>
+
+    </div>
+
+    <div id="fields" class="hidden">
+
+        <h1>Text Fields</h1>
 
         {{ forms.textField({
             label: "Plaintext Field"|t('plugin-uxd') ,
             instructions: "See `templates/_includes/forms/text.html` for all available options."|t('plugin-uxd'),
             placeholder: "Placeholder text"|t('plugin-uxd'),
-            warning: "This field is required."|t('plugin-uxd'),
             name: '',
             value: '',
+            errors: ["This field is required."|t('plugin-uxd')],
             required: true,
             autofocus: true,
         }) }}
@@ -42,6 +76,7 @@
         {{ forms.textField({
             label: "Password Field"|t('plugin-uxd'),
             instructions: "See `templates/_includes/forms/text.html` for all available options."|t('plugin-uxd'),
+            warning: "Beware of shoulder surfing."|t('plugin-uxd'),
             type: 'password',
             name: '',
             value: '1234567890',
@@ -56,9 +91,9 @@
             rows: 3,
         }) }}
 
-    </div>
+        <hr/>
 
-    <div id="selection" class="hidden">
+        <h1>Selection Fields</h1>
 
         {{ forms.lightswitchField({
             label: "Lightswitch Field"|t('plugin-uxd'),
@@ -115,20 +150,12 @@
             },
         }) }}
 
-    </div>
-
-    <div id="color" class="hidden">
-
         {{ forms.colorField({
             label: "Color Field"|t('plugin-uxd'),
             instructions: "See `templates/_includes/forms/color.html` for all available options."|t('plugin-uxd'),
             name: '',
             value: '#da5a47',
         }) }}
-
-    </div>
-
-    <div id="file" class="hidden">
 
         {{ forms.fileField({
             label: "File Field"|t('plugin-uxd'),
@@ -137,9 +164,9 @@
             value: '',
         }) }}
 
-    </div>
+        <hr/>
 
-    <div id="date" class="hidden">
+        <h1>Date Fields</h1>
 
         {{ forms.dateField({
             label: "Date Field"|t('plugin-uxd'),
@@ -162,9 +189,9 @@
             value: now|date('h:i'),
         }) }}
 
-    </div>
+        <hr/>
 
-    <div id="element" class="hidden">
+        <h1>Element Select Fields</h1>
 
         {{ forms.elementSelectField({
             label: "Entry Select Field"|t('plugin-uxd'),
@@ -188,9 +215,9 @@
             selectionLabel: "Add an asset"|t('plugin-uxd'),
         }) }}
 
-    </div>
+        <hr/>
 
-    <div id="table" class="hidden">
+        <h1>Table Fields</h1>
 
         {{ forms.editableTableField({
             label: "Editable Table Field"|t('plugin-uxd'),
@@ -230,6 +257,118 @@
             minRows: 1,
             maxRows: 5,
         }) }}
+
+        <hr/>
+
+        <h1>Custom Fields</h1>
+
+        {% set input %}
+            <p>Any markup can be entered here.</p>
+        {% endset %}
+        {{ forms.field({
+            label: "Custom Field"|t('plugin-uxd') ,
+            instructions: "See `templates/_includes/forms/field.html` for all available options."|t('plugin-uxd'),
+        }, input) }}
+
+    </div>
+
+    <div id="tables" class="hidden">
+
+        <h1>Horizontal Table</h1>
+
+        <table class="data fullwidth collapsible">
+            <tbody>
+                <tr>
+                    <th class="light">Recipients</th>
+                    <td>305</td>
+                </tr>
+                <tr>
+                    <th class="light">Opened</th>
+                    <td>128</td>
+                </tr>
+                <tr>
+                    <th class="light">Clicked</th>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <th class="light">
+                        Click Through Rate
+                        <span class="info">Click Through Rate is calculated by dividing the number of clicks by the number of opens.</span>
+                    </th>
+                    <td>62%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br/><br/>
+
+        <h1>Vertical Table</h1>
+
+        <table class="data fullwidth collapsible">
+            <thead>
+                <tr>
+                    <th>Newsletter</th>
+                    <th>Recipients</th>
+                    <th>Opens</th>
+                    <th>Clicks</th>
+                    <th>
+                        CTR
+                        <span class="info">Click Through Rate is calculated by dividing the number of clicks by the number of opens.</span>
+                    </th>
+                    <th data-icon="world"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <a href="#">Spring is Here</a>
+                    </th>
+                    <td>1618</td>
+                    <td>1000</td>
+                    <td>618</td>
+                    <td>61.8%</td>
+                    <td>
+                        <a href="#" data-icon="world"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a href="#">Summer is Here</a>
+                    </th>
+                    <td>1618</td>
+                    <td>1000</td>
+                    <td>618</td>
+                    <td>61.8%</td>
+                    <td>
+                        <a href="#" data-icon="world"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a href="#">Autumn is Here</a>
+                    </th>
+                    <td>1618</td>
+                    <td>1000</td>
+                    <td>618</td>
+                    <td>61.8%</td>
+                    <td>
+                        <a href="#" data-icon="world"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a href="#">Winter is Here</a>
+                    </th>
+                    <td>1618</td>
+                    <td>1000</td>
+                    <td>618</td>
+                    <td>61.8%</td>
+                    <td>
+                        <a href="#" data-icon="world"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 

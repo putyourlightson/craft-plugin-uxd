@@ -6,6 +6,7 @@
 namespace putyourlightson\pluginuxd\controllers;
 
 use Craft;
+use craft\helpers\FileHelper;
 use craft\web\Controller;
 use putyourlightson\pluginuxd\models\SettingsModel;
 use putyourlightson\pluginuxd\PluginUXD;
@@ -13,35 +14,35 @@ use yii\base\ErrorException;
 
 class RoutingController extends Controller
 {
-    public function actionRoute()
+    public function actionRoute(string $template = 'index')
     {
         /** @var SettingsModel $settings */
         $settings = PluginUXD::$plugin->getSettings();
 
-        if (empty($settings->templateFilePath)) {
-            return $this->redirect('plugin-uxd/stylesheet');
+        if ($template === 'stylesheet' || empty($settings->templateFolderPath)) {
+            return $this->renderTemplate('plugin-uxd/stylesheet');
         }
 
-        $view = Craft::$app->getView();
-        $templateMode = $view->getTemplateMode();
-        $view->setTemplateMode($view::TEMPLATE_MODE_SITE);
-        $siteTemplatesPath = $view->getTemplatesPath();
-        $view->setTemplateMode($templateMode);
+        $templateFolderPath = FileHelper::normalizePath($settings->templateFolderPath);
 
-        $templateFilePath = trim($settings->templateFilePath, '/').'.html';
-
-        if (!is_file($siteTemplatesPath.'/'.$templateFilePath)) {
-            throw new ErrorException('The template file path is not valid: '.$settings->templateFilePath);
+        if (!is_dir($templateFolderPath)) {
+            throw new ErrorException('The template folder path is not valid: '.$settings->templateFolderPath);
         }
 
-        $basePath = PluginUXD::$plugin->getBasePath();
+        $filename = $template.'.html';
 
-        if (!is_dir($basePath.'/templates/temp')) {
-            mkdir($basePath.'/templates/temp');
+        if (!is_file($templateFolderPath.'/'.$filename)) {
+            throw new ErrorException('The template file could not be found: '.$templateFolderPath.'/'.$filename);
         }
 
-        copy($siteTemplatesPath.'/'.$templateFilePath, $basePath.'/templates/temp/index.html');
+        $tempPath = PluginUXD::$plugin->getBasePath().'/templates/temp';
 
-        return $this->renderTemplate('plugin-uxd/temp/index');
+        if (!is_dir($tempPath)) {
+            FileHelper::createDirectory($tempPath);
+        }
+
+        FileHelper::copyDirectory($templateFolderPath, $tempPath);
+
+        return $this->renderTemplate('plugin-uxd/temp/'.$template);
     }
 }

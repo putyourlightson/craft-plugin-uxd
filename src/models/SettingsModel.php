@@ -25,15 +25,6 @@ class SettingsModel extends Model
     /**
      * @var string
      */
-    public $templateFilePath;
+    public $templateFolderPath;
 
-    /**
-     * @var string
-     */
-    public $cssFilePath;
-
-    /**
-     * @var string
-     */
-    public $jsFilePath;
 }
