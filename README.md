@@ -4,7 +4,7 @@ The Plugin UXD plugin is a user experience designer for plugin control panel pag
 
 It provides a set of typography, field and table elements that enables you to quickly design and develop your plugin control panel pages. 
 
-<img src="screenshot.png" alt="Screenshot">
+<p><img src="screenshots/plugin.png"></p>
 
 ## Requirements
 
@@ -32,5 +32,7 @@ Any references to your templates (included or extended) should be written as plu
     {% include "plugin-uxd/temp/_includes/header" %}
 
 The stylesheet is always available at /admin/plugin-uxd/stylesheet
+
+<p><img src="screenshots/settings.png"></p>
 
 <small>Created by [PutYourLightsOn](https://www.putyourlightson.net/).</small>
