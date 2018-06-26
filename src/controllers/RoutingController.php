@@ -23,7 +23,7 @@ class RoutingController extends Controller
             return $this->renderTemplate('plugin-uxd/stylesheet');
         }
 
-        $templateFolderPath = FileHelper::normalizePath($settings->templateFolderPath);
+        $templateFolderPath = FileHelper::normalizePath(Craft::getAlias($settings->templateFolderPath));
 
         if (!is_dir($templateFolderPath)) {
             throw new ErrorException('The template folder path is not valid: '.$settings->templateFolderPath);

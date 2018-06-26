@@ -6,24 +6,33 @@
 	instructions: "The label to give the plugin in the navigation sidebar."|t('plugin-uxd'),
 	name: 'navLabel',
 	value: settings.navLabel,
+	placeholder: 'Plugin UXD',
 	first: true,
 }) }}
 
 {{ forms.textField({
-	label: "Navigation Icon Mask Path"|t('plugin-uxd'),
-	instructions: "The full path to an icon mask to show in the navigation sidebar."|t('plugin-uxd'),
-	name: 'navIconMaskPath',
-	value: settings.navIconMaskPath,
+	label: "Navigation Icon Mask File Path"|t('plugin-uxd'),
+	instructions: "The full path to an icon mask SVG file to show in the navigation sidebar. It can begin with an alias, such as `@root`."|t('plugin-uxd'),
+	name: 'navIconMaskFilePath',
+	value: settings.navIconMaskFilePath,
+	placeholder: '/path/to/file.svg',
 }) }}
 
 {{ forms.textField({
 	label: "Template Folder Path"|t('plugin-uxd'),
-	instructions: "The full path to your template folder."|t('plugin-uxd'),
+	instructions: "The full path to your template folder. It can begin with an alias, such as `@root`."|t('plugin-uxd'),
 	name: 'templateFolderPath',
 	value: settings.templateFolderPath,
+	placeholder: '/path/to/folder',
 }) }}
 
 <div class="light">
-	Any references to your templates (included or extended) should be written as `plugin-uxd/temp/{template-folder-path}`.
-	<pre><code>{{ '{% include "plugin-uxd/temp/{template-folder-path}" %}' }}</code></pre>
+	<p>
+		{{ "Any references to your templates (included or extended) should be written as `plugin-uxd/temp/{template-path}`, for example:"|t('plugin-uxd')|markdown|raw }}
+		<pre><code>{{ '{% include "plugin-uxd/temp/_includes/header" %}' }}</code></pre>
+	</p>
+	<p>
+		{{ "The stylesheet is always available at:"|t('plugin-uxd') }}
+		<a href="{{ url('plugin-uxd/stylesheet') }}">{{ url('plugin-uxd/stylesheet') }}</a>
+	</p>
 </div>

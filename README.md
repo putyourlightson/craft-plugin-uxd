@@ -4,7 +4,7 @@ The Plugin UXD plugin is a user experience designer for plugin control panel pag
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+Craft CMS 3.0.0 or later.
 
 ## Installation
 

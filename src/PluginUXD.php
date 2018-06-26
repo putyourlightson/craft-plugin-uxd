@@ -8,12 +8,14 @@ namespace putyourlightson\pluginuxd;
 use Craft;
 use craft\base\Plugin;
 use craft\events\RegisterUrlRulesEvent;
-use craft\web\twig\variables\CraftVariable;
 use craft\web\UrlManager;
 use putyourlightson\pluginuxd\models\SettingsModel;
-use putyourlightson\pluginuxd\variables\PluginUXDVariable;
 use yii\base\Event;
 
+/**
+ *
+ * @property mixed $cpNavItem
+ */
 class PluginUXD extends Plugin
 {
     /**
@@ -29,13 +31,6 @@ class PluginUXD extends Plugin
         parent::init();
 
         self::$plugin = $this;
-
-        // Register variable
-        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function(Event $event) {
-            /** @var CraftVariable $variable */
-            $variable = $event->sender;
-            $variable->set('pluginUXD', PluginUXDVariable::class);
-        });
 
         // Register CP URL rules event
         Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
@@ -56,7 +51,7 @@ class PluginUXD extends Plugin
 
         $parent = parent::getCpNavItem();
         $parent['label'] = $settings->navLabel ?: $parent['label'];
-        $parent['icon'] = $settings->navIconMaskPath ?: $parent['icon'];
+        $parent['icon'] = $settings->navIconMaskFilePath ? Craft::getAlias($settings->navIconMaskFilePath) : $parent['icon'];
 
         return $parent;
     }

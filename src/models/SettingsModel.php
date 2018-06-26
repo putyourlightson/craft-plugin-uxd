@@ -20,7 +20,7 @@ class SettingsModel extends Model
     /**
      * @var string
      */
-    public $navIconMaskPath;
+    public $navIconMaskFilePath;
 
     /**
      * @var string
