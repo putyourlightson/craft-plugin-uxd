@@ -1,6 +1,6 @@
 <p align="center"><img width="200" src="src/icon.svg"></p>
 
-# Plugin UXD for Craft CMS
+# Plugin UXD for Craft CMS 3
 
 The Plugin UXD plugin is a user experience designer for plugin control panel pages in [Craft CMS](https://craftcms.com/).
 
