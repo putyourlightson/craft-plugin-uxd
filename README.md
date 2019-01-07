@@ -2,6 +2,8 @@
 
 # Plugin UXD for Craft CMS 3
 
+> **This plugin has been discontinued. Please refer to the [CP Style Guide Plugin](https://github.com/putyourlightson/craft-cp-style-guide) which is being actively developed**.
+
 The Plugin UXD plugin is a user experience designer for plugin control panel pages in [Craft CMS](https://craftcms.com/).
 
 It provides a set of typography, field and table elements that enables you to quickly design and develop your plugin control panel pages. 
@@ -39,4 +41,4 @@ The stylesheet is always available at /admin/plugin-uxd/stylesheet
 
 <p><img src="docs/images/settings-1.0.0.png"></p>
 
-<small>Created by [PutYourLightsOn](https://www.putyourlightson.net/).</small>
+<small>Created by [PutYourLightsOn](https://putyourlightson.com/).</small>

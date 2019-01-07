@@ -28,7 +28,7 @@
         "name": "Plugin UXD",
         "handle": "plugin-uxd",
         "developer": "PutYourLightsOn",
-        "developerUrl": "https://www.putyourlightson.net/",
+        "developerUrl": "https://putyourlightson.com/",
         "changelogUrl": "https://raw.githubusercontent.com/putyourlightson/craft-plugin-uxd/v1/CHANGELOG.md",
         "class": "putyourlightson\\pluginuxd\\PluginUXD",
         "hasCpSettings": true,
