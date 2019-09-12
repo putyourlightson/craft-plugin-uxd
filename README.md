@@ -12,6 +12,10 @@ It provides a set of typography, field and table elements that enables you to qu
 <p><img src="docs/images/fields-1.0.0.png"></p>
 <p><img src="docs/images/tables-1.0.0.png"></p>
 
+## Documentation
+
+Learn more and read the documentation at [putyourlightson.com/plugins/plugin-uxd »](https://putyourlightson.com/plugins/plugin-uxd)
+
 ## License
 
 This plugin is licensed for free under the MIT License.
