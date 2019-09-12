@@ -24,6 +24,6 @@ Craft CMS 3.0.0 or later.
 
 To install the plugin, search for "Plugin UXD" in the Craft Plugin Store, or install manually using composer.
 
-        composer require putyourlightson/craft-plugin-uxd
+    composer require putyourlightson/craft-plugin-uxd
 
 <small>Created by [PutYourLightsOn](https://putyourlightson.com/).</small>
